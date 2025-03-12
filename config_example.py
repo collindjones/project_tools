@@ -1,5 +1,6 @@
 from decouple import config
+from pathlib import Path
 
 WRDS_USERNAME = config("WRDS_USERNAME", default="test")
-BASE_DIR = config("BASE_DIR")
-DATA_DIR = config("DATA_DIR")
+BASE_DIR = Path(config("BASE_DIR"))
+DATA_DIR = Path(config("DATA_DIR"))
