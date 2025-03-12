@@ -110,6 +110,6 @@ def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
                    columnspacing=1, fontsize=18)
         axs2.tick_params(axis='y', labelsize=18)
     if len(name) > 0:
-        fig.savefig(output + '/{}.pdf'.format(name), format='pdf')
+        fig.savefig(output / '{}.pdf'.format(name), format='pdf')
     plt.close(fig)
     display_fig(fig)

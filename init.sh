@@ -15,6 +15,7 @@ cp project_tools/gitignore_example ./.gitignore
 cp project_tools/requirements_example.txt ./requirements.txt
 cp project_tools/example.ipynb reports/
 cp project_tools/example_note_20250312.rst notes/
+cp project_tools/dodo_example.py ./dodo.py
 
 source .env
 
@@ -27,14 +28,6 @@ sphinx-build -M html docs/source/ docs/build/
 echo "autosummary_generate = True" >> docs/source/conf.py
 echo -e "import sys\nimport os\nfrom pathlib import Path\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))" >> docs/source/conf.py
 echo "html_theme_options = {'page_width': '1250px'}" >> docs/source/conf.py
-
-.. toctree::
-   :maxdepth: 2
-
-   api
-   reports
-   notes
-
 
 echo -e "Contents \n-------- \n\n.. toctree::\n   :maxdepth: 2\n\n   api\n   reports\n   notes" >> docs/source/index.rst
 cp project_tools/sphinx_tools/api.rst docs/source/api.rst
@@ -53,3 +46,6 @@ make doctest
 
 cd ..
 ln -s docs/build/html/index.html project_doc.html
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+doit
