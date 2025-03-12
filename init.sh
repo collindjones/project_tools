@@ -14,7 +14,7 @@ cp project_tools/config_example.py ./config.py
 cp project_tools/gitignore_example ./.gitignore
 cp project_tools/requirements_example.txt ./requirements.txt
 cp project_tools/example.ipynb reports/
-cp project_tools/example_note_20250312.rst notes/
+cp project_tools/sphinx_tools/example_note_20250312.rst notes/
 cp project_tools/dodo_example.py ./dodo.py
 
 source .env
