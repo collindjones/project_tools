@@ -10,10 +10,6 @@ mkdir data_manual
 touch data_manual/place
 mkdir reports
 mkdir notes
-mkdir _data
-touch _data/place
-mkdir _output
-touch _output/place
 cp project_tools/env.example ./.env
 cp project_tools/config_example.py ./config.py
 cp project_tools/gitignore_example ./.gitignore
@@ -54,3 +50,7 @@ ln -s docs/build/html/index.html project_doc.html
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 doit
+
+cp project_tools/README_repo.md README.md
+git commit -m "Add submodule"
+git add .gitignore README.md assets/ config.py data_manual/ docs/ dodo.py notes/example_note_20250312.rst reports/example.ipynb requirements.txt src/

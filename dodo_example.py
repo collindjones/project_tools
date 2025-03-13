@@ -1,7 +1,15 @@
 from doit.tools import config_changed
+import config
 import pandas as pd
 
 last_data = pd.to_datetime('today').strftime('%Y%m%d')
+data_exists = config.DATA_DIR.exists()
+output_exists = config.OUTPUT_DIR.exists()
+
+def task_create_data():
+    return {'actions': ['mkdir _data'], 'uptodate': [data_exists]}
+def task_create_output():
+    return {'actions': ['mkdir _output'], 'uptodate': [output_exists]}
 
 def task_load_data():
     from project_tools import pullers

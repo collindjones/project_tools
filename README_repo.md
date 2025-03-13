@@ -9,6 +9,7 @@ ln -s reports docs/source/reports
 ln -s notes docs/source/notes
 ```
 
+3. Run doit in the top-level directory
 
 # General Directory Structure
 * The assets folder is used for things like hand-drawn figures or other pictures that were not generated from code. These things cannot be easily recreated if they are deleted.
