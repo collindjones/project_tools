@@ -19,10 +19,7 @@ cp project_tools/sphinx_tools/example_note_20250312.rst notes/
 cp project_tools/dodo_example.py ./dodo.py
 
 source .env
-
-conda create --prefix $PWD/.venv python
-conda activate $PWD/.venv
-pip install -r requirements.txt
+source project_tools/venv_setup.sh
 
 sphinx-quickstart docs --extensions=sphinx.ext.doctest,sphinx.ext.autodoc,sphinx.ext.autosummary,nbsphinx,sphinx.ext.viewcode
 sphinx-build -M html docs/source/ docs/build/

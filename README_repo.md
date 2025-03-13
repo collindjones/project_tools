@@ -1,7 +1,7 @@
 Based very heavily on Jeremy Bejarano's excellent blank_project repo: https://github.com/jmbejara/blank_project/tree/main
 
 # Cloning Instructions
-1. Clone the git repo, in whatever way you prefer
+1. Clone the git repo, with the submodule recurse option: `git clone --recurse-submodules git@github.com:...`
 2. Create the symlink structure in the sphinx documentation. In the top-level directory,
 
 ```
