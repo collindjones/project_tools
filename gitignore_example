@@ -2,3 +2,13 @@
 /_output/*
 /reports/*.pdf
 .env*
+.doit.db
+.venv/
+__pycache__/
+project_doc.html
+docs/Makefile
+docs/build/
+docs/make.bat
+docs/source/generated
+docs/source/notes
+docs/source/reports

@@ -3,12 +3,17 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 pwd
 
 mkdir src
+touch src/place
 mkdir assets
+touch assets/place
 mkdir data_manual
+touch data_manual/place
 mkdir reports
 mkdir notes
 mkdir _data
+touch _data/place
 mkdir _output
+touch _output/place
 cp project_tools/env.example ./.env
 cp project_tools/config_example.py ./config.py
 cp project_tools/gitignore_example ./.gitignore
