@@ -8,8 +8,11 @@ Based very heavily on Jeremy Bejarano's excellent blank_project repo: https://gi
 ln -s reports docs/source/reports
 ln -s notes docs/source/notes
 ```
-
-3. Run doit in the top-level directory
+3. Create the .env file. If you just want a bare one to start with, you can copy the example in project_tools, with
+```
+cp project_tools/env.example ./.env
+```
+4. Run doit in the top-level directory
 
 # General Directory Structure
 * The assets folder is used for things like hand-drawn figures or other pictures that were not generated from code. These things cannot be easily recreated if they are deleted.
