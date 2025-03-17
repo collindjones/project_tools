@@ -49,3 +49,7 @@ def task_sphinx_doctest():
             raise RuntimeError("Doctests failed! See output above.")
     return {'actions': [run_doctests], 'verbosity' : 2, \
             'targets': [config.BASE_DIR / 'build/doctest/output.txt']}
+
+def task_update_requirements():
+    return {'actions': ['pip freeze > requirements.txt'], \
+            'targets': [config.BASE_DIR / 'requirements.txt']}
