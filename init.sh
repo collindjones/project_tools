@@ -35,7 +35,7 @@ cp project_tools/sphinx_tools/reports.rst docs/source/reports.rst
 cp project_tools/sphinx_tools/notes.rst docs/source/notes.rst
 mkdir docs/source/_templates/autosummary
 cp project_tools/sphinx_tools/module.rst docs/source/_templates/autosummary
-cp project_tools/bill.png docs/source/_static/
+ln -s project_tools/bill.png docs/source/_static/
 
 cd docs/source
 ln -s ../../reports/ reports
