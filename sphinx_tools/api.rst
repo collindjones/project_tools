@@ -7,3 +7,4 @@ API Documentation
 
       project_tools.pullers
       project_tools.plots
+      test

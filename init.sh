@@ -17,6 +17,7 @@ cp project_tools/requirements_example.txt ./requirements.txt
 cp project_tools/example.ipynb reports/
 cp project_tools/sphinx_tools/example_note_20250312.rst notes/
 cp project_tools/dodo_example.py ./dodo.py
+cp project_tools/test.py ./src/
 
 source .env
 source project_tools/venv_setup.sh
@@ -24,7 +25,8 @@ source project_tools/venv_setup.sh
 sphinx-quickstart docs --extensions=sphinx.ext.doctest,sphinx.ext.autodoc,sphinx.ext.autosummary,nbsphinx,sphinx.ext.viewcode
 sphinx-build -M html docs/source/ docs/build/
 echo "autosummary_generate = True" >> docs/source/conf.py
-echo -e "import sys\nimport os\nfrom pathlib import Path\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))" >> docs/source/conf.py
+echo -e "import sys\nimport os\nfrom pathlib import Path\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))\nsys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))" >> docs/source/conf.py
+
 echo "html_theme_options = {'page_width': '1250px'}" >> docs/source/conf.py
 
 echo -e "Contents \n-------- \n\n.. toctree::\n   :maxdepth: 2\n\n   api\n   reports\n   notes" >> docs/source/index.rst
