@@ -27,7 +27,7 @@ sphinx-build -M html docs/source/ docs/build/
 echo "autosummary_generate = True" >> docs/source/conf.py
 echo -e "import sys\nimport os\nfrom pathlib import Path\nsys.path.insert(0, str(Path(__file__).resolve().parents[2]))\nsys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'src'))" >> docs/source/conf.py
 
-echo "html_theme_options = {'page_width': '1250px'}" >> docs/source/conf.py
+echo "html_theme_options = {'page_width': '1250px','logo':'bill.png'}" >> docs/source/conf.py
 
 echo -e "Contents \n-------- \n\n.. toctree::\n   :maxdepth: 2\n\n   api\n   reports\n   notes" >> docs/source/index.rst
 cp project_tools/sphinx_tools/api.rst docs/source/api.rst
@@ -35,6 +35,7 @@ cp project_tools/sphinx_tools/reports.rst docs/source/reports.rst
 cp project_tools/sphinx_tools/notes.rst docs/source/notes.rst
 mkdir docs/source/_templates/autosummary
 cp project_tools/sphinx_tools/module.rst docs/source/_templates/autosummary
+cp project_tools/bill.png docs/source/_static/
 
 cd docs/source
 ln -s ../../reports/ reports
