@@ -1,4 +1,5 @@
 from doit.tools import config_changed
+import subprocess
 import config
 import pandas as pd
 
@@ -33,3 +34,18 @@ def task_plot_data():
     return {'actions': [plot_data], \
             'targets': [config.BASE_DIR / '_output/dff.pdf'], \
             'file_dep': [config.DATA_DIR / 'dff.csv']}
+
+def task_sphinx():
+    return {'actions': ['cd docs;make clean html'], \
+            'targets':[config.BASE_DIR / 'project_doc.html'], \
+            'verbosity': 2}
+
+def task_sphinx_doctest():
+    def run_doctests():
+        result = subprocess.run(['make', '-C', 'docs', 'doctest'], capture_output=True, text=True)
+        print(result.stdout)
+        print(result.stderr)
+        if result.returncode != 0:
+            raise RuntimeError("Doctests failed! See output above.")
+    return {'actions': [run_doctests], 'verbosity' : 2, \
+            'targets': [config.BASE_DIR / 'build/doctest/output.txt']}
