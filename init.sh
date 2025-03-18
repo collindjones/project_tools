@@ -18,6 +18,7 @@ cp project_tools/example.ipynb reports/
 cp project_tools/sphinx_tools/example_note_20250312.rst notes/
 cp project_tools/dodo_example.py ./dodo.py
 cp project_tools/test.py ./src/
+cp project_tools/example_yield_curve.ipynb ./reports
 
 source .env
 source project_tools/venv_setup.sh

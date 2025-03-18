@@ -113,3 +113,47 @@ def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
         fig.savefig(output / '{}.pdf'.format(name), format='pdf')
     plt.close(fig)
     display_fig(fig)
+
+
+def plot_termstructure(df, y=['yld_last'], output=config.BASE_DIR, dts_plot=['01-10-2024'], \
+                       dt_base=None, mat='till_mat', dt = 'dt', name='', scatter=True, \
+                       term_sep = [('originalSecurityTerm', '2-Year'), \
+                                   ('originalSecurityTerm', '5-Year'), \
+                                   ('originalSecurityTerm', '10-Year'), \
+                                   ('type','Bill')]):
+    date_format = mdates.DateFormatter('%b-%Y')
+    df = df.set_index([dt])
+    legend_loc = (0.5, -0.23)
+    col_num = min(len(dts_plot), 2)
+    row_num = max((int(np.ceil(len(dts_plot)/col_num))), 1)
+    fig, axs = plt.subplots(row_num, col_num, figsize=(15, 10))
+    if not isinstance(axs, np.ndarray):
+        axs = np.array([[axs]])
+    elif axs.ndim==1:
+        if len(axs) == 2:
+            axs = axs[np.newaxis, :]
+        else:
+            axs = axs[:, np.newaxis]
+    for i,d in enumerate(dts_plot):
+        r = int(i/col_num)
+        c = i % col_num
+        for y_i in y:
+            try:
+                if scatter:
+                    axs[r,c].scatter(data=df.loc[ix[d], :], x=mat, y=y_i, label=y_i + ' All')
+                    for (field, val) in term_sep:
+                        axs[r,c].scatter(data=df.loc[df[field] == val, :].loc[ix[d], :], x=mat, y=y_i, label=y_i + ' {}'.format(val))
+                else:
+                    axs[r,c].plot(mat, y_i, data=df.loc[ix[d], :], label=y_i + ' All')
+                    for (field, val) in term_sep:
+                        axs[r,c].plot(mat, y_i, data=df.loc[df[field] == val, :].loc[ix[d], :], label=y_i + ' {}'.format(val))
+                    if not dt_base is None:
+                        axs[r,c].plot(mat, y_i, data=df.loc[ix[dt_base], :], label=y_i + 'Base')
+            except KeyError:
+                continue
+        axs[r,c].set_title(d)
+        axs[r,c].legend(loc='upper right')
+    if len(name) > 0:
+        fig.savefig(output / '{}.pdf'.format(name), format='pdf')
+    plt.close(fig)
+    display_fig(fig)
