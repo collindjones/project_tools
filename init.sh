@@ -19,6 +19,7 @@ cp project_tools/sphinx_tools/example_note_20250312.rst notes/
 cp project_tools/dodo_example.py ./dodo.py
 cp project_tools/test.py ./src/
 cp project_tools/example_yield_curve.ipynb ./reports
+cp project_tools/org_test.org notes/
 
 source .env
 source project_tools/venv_setup.sh
@@ -48,6 +49,27 @@ make doctest
 
 cd ..
 ln -s docs/build/html/index.html project_doc.html
+
+# Get the absolute path of the script (even if sourced)
+script_dir="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+# Get the parent directory of the script
+parent_dir="$(dirname "$script_dir")"
+
+# Extract the name of the parent directory
+parent_name="$(basename "$parent_dir")"
+
+# Construct the desired path
+final_path="$parent_dir/notes/$parent_name.org"
+
+# Echo the path
+echo "$final_path"
+
+if [ -n "$AGENDA_LIST_PATH" ]; then
+    echo "AGENDA_LIST_PATH is set to: $AGENDA_LIST_PATH"
+    touch $AGENDA_LIST_PATH
+    echo -e "$final_path" >> $AGENDA_LIST_PATH
+fi
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 doit

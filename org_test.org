@@ -1,0 +1,70 @@
+# #+TODO: TODO IN-PROGRESS WAITING DONE
+# #+STARTUP: showall
+
+* Welcome to Org mode
+
+  Welcome, and thanks for trying out Org mode. Making outlines in
+  Org is very simple. It is just text! Just start typing.
+
+** TODO Some helpful tutorials
+[[https://orgmode.org/worg/org-tutorials/orgtutorial_dto.html][- The Very Basics]]
+- [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Another Basic One]]
+- [[https://orgmode.org/worg/org-tutorials/index.html][A big list of tutorials]]
+- [[https://sachachua.com/blog/2007/12/clocking-time-with-emacs-org/][Clocking]]
+- [[https://jeffbradberry.com/posts/2022/06/orgmode-basic-todos/][First in a nice workflow series]]
+- [[https://www.gnu.org/software/emacs/refcards/pdf/orgcard.pdf][Reference Card for keyboard]]
+
+** Examples of Document Things
+*** This is a headline, it starts with one or more stars
+  A heading has one star, a sub-heading two, etc.
+*** Working with lists
+**** Lord of the Rings
+   My favorite scenes are (in this order)
+   1. The attack of the Rohirrim
+   2. Eowyn's fight with the witch king
+      + I really like Miranda Otto.
+      + this was already my favorite scene in the book
+   3. Peter Jackson being shot by Legolas
+      - on DVD only
+      He makes a really funny face when it happens.
+   4. BLERP
+   But in the end, no individual scenes matter but the film as a whole.
+   Important actors in this film are:
+   - Elijah Wood :: He plays Frodo
+   - Sean Austin :: He plays Sam, Frodo's friend.  I still remember
+     him very well from his role as Mikey Walsh in The Goonies.
+   - Orlando Bloom :: You know who be
+*** Some text types
+You can make words *bold*, /italic/, _underlined_, =code= and ~verbatim~, and, if you must, +strike-through+.
+*** TODO buy airplane
+:LOGBOOK:
+CLOCK: [2025-03-27 Thu 08:33]--[2025-03-27 Thu 08:33] =>  0:00
+CLOCK: [2025-03-25 Tue 15:20]--[2025-03-25 Tue 15:22] =>  0:02
+CLOCK: [2025-03-25 Tue 15:09]--[2025-03-25 Tue 15:17] =>  0:08
+:END:
+*** TODO buy an airplane2
+SCHEDULED: <2025-03-27 Thu 14:30>
+:LOGBOOK:
+CLOCK: [2025-03-26 Wed 16:19]--[2025-03-26 Wed 16:23] =>  0:04
+CLOCK: [2025-03-26 Wed 15:46]--[2025-03-26 Wed 15:47] =>  0:01
+:END:
+*** DONE buy an airplane3
+:LOGBOOK:
+CLOCK: [2025-03-26 Wed 15:53]--[2025-03-26 Wed 16:05] =>  0:12
+:END:
+*** TODO figure out org-mode
+:LOGBOOK:
+CLOCK: [2025-03-26 Wed 16:29]--[2025-03-26 Wed 16:30] =>  0:01
+:END:
+*** DONE Do something or other
+**** DONE think about buying an airplane
+
+** Commands you're going to want
+- org-do-demote
+- org-do-promote
+- org-agenda-list
+- org-agenda-view
+- org-todo-list
+- org-agenda-clockin
+- org-agenda-clockout
+- org-agenda-redo

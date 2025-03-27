@@ -42,6 +42,13 @@ def task_plot_data():
             'targets': [config.BASE_DIR / '_output/dff.pdf'], \
             'file_dep': [config.DATA_DIR / 'dff.csv']}
 
+def task_convert_org():
+    in_files = glob.glob('notes/*.org')
+    out_files = [f.replace('.org', '.rst') for f in in_files]
+    return {'actions' : ["ls notes/*.org | sed 's/.org$//' | xargs -I {} pandoc -f org -t rst -o {}.rst {}.org"], \
+            'file_dep': in_files, \
+            'targets' : out_files}
+
 def task_sphinx():
     return {'actions': ['cd docs;make clean html'], \
             'targets':[config.BASE_DIR / 'project_doc.html']}
