@@ -20,7 +20,12 @@ def display_org(df):
     See example in viewers.py script. Not good for docstring.
 
     """
-    df_org = tabulate(df, headers="keys", tablefmt="orgtbl")
+    longer = len(df) > 1000
+    if longer:
+        df_org = tabulate(df.head(1000), headers="keys", tablefmt="orgtbl")
+        df_org = df_org + '\n\nActual Dataframe longer than 1000 rows'
+    else:
+        df_org = tabulate(df, headers="keys", tablefmt="orgtbl")
 
     with open(config.DATA_DIR / 'org_disp_tmp.org', 'w') as f:
         f.write(df_org)
