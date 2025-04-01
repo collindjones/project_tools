@@ -69,6 +69,7 @@ if [ -n "$AGENDA_LIST_PATH" ]; then
     echo "AGENDA_LIST_PATH is set to: $AGENDA_LIST_PATH"
     touch $AGENDA_LIST_PATH
     echo -e "$final_path" >> $AGENDA_LIST_PATH
+    echo -e "#+ARCHIVE: my_custom_archive.org::* Archived Tasks\n* Project Agenda" >> $final_path
 fi
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
