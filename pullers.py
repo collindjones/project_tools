@@ -110,12 +110,12 @@ def pull_WRDS(lib='', tbl='', sql='', dates=[]):
 
     Examples
     --------
-    >>> import project_tools.pullers
-    >>> df = project_tools.pullers.pull_WRDS(sql = "WITH yld AS (SELECT caldt, tdnomprc, tdyld, tdduratn, kycrspid FROM crsp_m_treasuries.tfz_dly WHERE caldt = DATE('2025-01-15')) SELECT * FROM yld")
-    Loading library list...
-    Done
-    >>> df.loc[df['kycrspid'] == '20270215.106620', 'tdyld'].values[0]
-    np.float64(0.00010975948313739)
+    # >>> import project_tools.pullers
+    # >>> df = project_tools.pullers.pull_WRDS(sql = "WITH yld AS (SELECT caldt, tdnomprc, tdyld, tdduratn, kycrspid FROM crsp_m_treasuries.tfz_dly WHERE caldt = DATE('2025-01-15')) SELECT * FROM yld")
+    # Loading library list...
+    # Done
+    # >>> df.loc[df['kycrspid'] == '20270215.106620', 'tdyld'].values[0]
+    # np.float64(0.00010975948313739)
     """
 
     if (len(lib) == 0 | len(tbl) == 0) and len(sql) == 0:
