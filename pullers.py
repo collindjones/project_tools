@@ -45,7 +45,7 @@ cols_keep = [
     'totalAccepted',
     'totalTendered']
 
-def pull_fred(series, start='2001-01-01'):
+def pull_fred(series, start='2001-01-01', end='2099-01-01'):
     """
     Pull a series from FRED.
 
@@ -72,7 +72,7 @@ def pull_fred(series, start='2001-01-01'):
 
     """
 
-    df = web.DataReader(series, 'fred', start, 'today')
+    df = web.DataReader(series, 'fred', start, end)
     return df
 
 def pull_WRDS(lib='', tbl='', sql='', dates=[]):
