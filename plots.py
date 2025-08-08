@@ -28,8 +28,9 @@ colors = [ \
 colors = [(c[0]/255, c[1]/255, c[2]/255) for c in colors]
 
 
-def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
-         output=config.BASE_DIR, dates = [], to_scatter = [], yaxis2 = []):
+def plot(ys, x, fig, axs, data = pd.DataFrame(), name = 'last', labels = [],
+         dates = [], to_scatter = [], yaxis2 = [], \
+         linestyle=[]):
     """
     Plot one or more data series from the same pandas DataFrame. Plots can
     be line plots, scatter plots, or some combination of the two.
@@ -72,10 +73,10 @@ def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
     """
     plt.close('all')
     date_format = mdates.DateFormatter('%b-%Y')
-    legend_loc = (0.5, -0.23)
+    legend_loc = (0.5, -0.15)
     for d in dates:
         data[d] = pd.to_datetime(data[d])
-    fig, axs = plt.subplots(1, 1, figsize=(15, 10))
+    # fig, axs = plt.subplots(1, 1, figsize=(15, 10))
     if len(yaxis2) > 0:
         axs2 = axs.twinx()
     plt.tight_layout(pad=10)
@@ -83,16 +84,19 @@ def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
     if len(labels) == 0:
         labels = ys
 
+    if len(linestyle) == 0:
+        linestyle = ['-' for i in ys]
+
     for i, y in enumerate(ys):
         if y not in yaxis2:
             if y not in to_scatter:
-                axs.plot(x, y, data=data, label=labels[i], color = colors[i])
+                axs.plot(x, y, data=data, label=labels[i], color = colors[i], linestyle=linestyle[i])
             else:
                 axs.scatter(data=data, x=x, y=y,
                             label=labels[i], color=colors[i])
         else:
             if y not in to_scatter:
-                axs2.plot(x, y, data=data, label=labels[i], color=colors[i])
+                axs2.plot(x, y, data=data, label=labels[i], color=colors[i], linestyle = linestyle[i])
             else:
                 axs2.scatter(data=data, x=x, y=y, label = labels[i],
                              color=colors[i])
@@ -109,10 +113,11 @@ def plot(ys, x, data = pd.DataFrame(), name = 'last', labels = [],
                    bbox_to_anchor=legend_loc, ncol=2,
                    columnspacing=1, fontsize=18)
         axs2.tick_params(axis='y', labelsize=18)
-    if len(name) > 0:
-        fig.savefig(output / '{}.pdf'.format(name), format='pdf')
-    plt.close(fig)
-    display_fig(fig)
+    # if len(name) > 0:
+    #     fig.savefig(output / '{}.{}'.format(name, ext), format=ext)
+    # plt.close(fig)
+    # display_fig(fig)
+    return axs
 
 
 def plot_termstructure(df, y=['yld_last'], output=config.BASE_DIR, dts_plot=['01-10-2024'], \
