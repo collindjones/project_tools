@@ -120,7 +120,7 @@ def plot(ys, x, fig, axs, data = pd.DataFrame(), name = 'last', labels = [],
     return axs
 
 
-def plot_termstructure(df, y=['yld_last'], output=config.BASE_DIR, dts_plot=['01-10-2024'], \
+def plot_termstructure(df, y=['yld_last'], output='./', dts_plot=['01-10-2024'], \
                        dt_base=None, mat='till_mat', dt = 'dt', name='', scatter=True, \
                        term_sep = [('originalSecurityTerm', '2-Year'), \
                                    ('originalSecurityTerm', '5-Year'), \
