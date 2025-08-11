@@ -30,7 +30,7 @@ colors = [(c[0]/255, c[1]/255, c[2]/255) for c in colors]
 
 def plot(ys, x, fig, axs, data = pd.DataFrame(), name = 'last', labels = [],
          dates = [], to_scatter = [], yaxis2 = [], \
-         linestyle=[]):
+         linestyle=[], colors=colors):
     """
     Plot one or more data series from the same pandas DataFrame. Plots can
     be line plots, scatter plots, or some combination of the two.
@@ -113,12 +113,7 @@ def plot(ys, x, fig, axs, data = pd.DataFrame(), name = 'last', labels = [],
                    bbox_to_anchor=legend_loc, ncol=2,
                    columnspacing=1, fontsize=18)
         axs2.tick_params(axis='y', labelsize=18)
-    # if len(name) > 0:
-    #     fig.savefig(output / '{}.{}'.format(name, ext), format=ext)
-    # plt.close(fig)
-    # display_fig(fig)
     return axs
-
 
 def plot_termstructure(df, y=['yld_last'], output='./', dts_plot=['01-10-2024'], \
                        dt_base=None, mat='till_mat', dt = 'dt', name='', scatter=True, \
